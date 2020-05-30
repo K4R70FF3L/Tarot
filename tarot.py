@@ -10,6 +10,27 @@ relationship = [number + ' of ' +
 location = [number + ' of ' +
             suit for number in numbers for suit in ['Swords', 'Coins']]
 
+
+def drawCard(stack):
+    card = random.choice(stack)
+    stack.remove(card)
+    return card
+
+
+def drawCards(stack, amount):
+    return [drawCard(stack) for x in range(amount)]
+
+
+players = {}
+
+print('Enter player names:')
+line = input('->')
+while line != '':
+    players[line] = {'group': drawCards(group, 1), 'relationship': drawCards(
+        relationship, 2), 'location': drawCards(location, 2)}
+    line = input('->')
+
+
 print("Draw a 'g'roup, 'r'elationship or 'l'ocation card.")
 
 line = input('->')
